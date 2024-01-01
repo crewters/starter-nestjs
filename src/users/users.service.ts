@@ -10,7 +10,7 @@ export class UsersService {
   async getProfilePicById(id): Promise<{}> {
     return new Promise((res, rej) => {
       connection.query(
-        `SELECT * from USERS WHERE ID='${id["id"]}' LIMIT 20;`,
+        `SELECT * from users WHERE ID='${id["id"]}' LIMIT 20;`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
@@ -27,7 +27,7 @@ export class UsersService {
     return new Promise((res, rej) => {
       connection.query(
         `INSERT INTO users (userId, avatar) VALUES
-        ('${user.userId}', '${user.avatar}';`,
+        ('${user.userId}', '${user.avatar}');`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
