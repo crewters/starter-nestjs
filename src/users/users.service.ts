@@ -27,7 +27,7 @@ export class UsersService {
     return new Promise((res, rej) => {
       connection.query(
         `INSERT INTO users (userid, avatar) VALUES
-        ('${user.userId}', '${user.avatar}');`,
+        ('${user.userid}', '${user.avatar}');`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
