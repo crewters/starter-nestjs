@@ -38,8 +38,8 @@ export class UsersService {
   createProfilePic(user): any {
     return new Promise((res, rej) => {
       connection.query(
-        `INSERT INTO users (userid, avatar) VALUES
-        ('${user.userid}', '${user.avatar}');`,
+        `INSERT INTO users (userid, avatar, sport) VALUES
+        ('${user.userid}', '${user.avatar}', '${user.sport}');`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
