@@ -3,8 +3,20 @@ import { connection } from 'src/db.config';
 
 @Injectable()
 export class UsersService {
-  getHello(): string {
-    return 'Hello World!';
+
+  getAllProfilePics(): Promise<{}> {
+    return new Promise((res, rej) => {
+      connection.query(
+        `SELECT * from users LIMIT 100;`,
+        function (error, results, fields) {
+          if (error) throw error;
+          results = results.rows.map((result) => {
+            return Object.assign({}, result);
+          });
+          res(results);
+        },
+      );
+    });
   }
 
   async getProfilePicById(id): Promise<{}> {

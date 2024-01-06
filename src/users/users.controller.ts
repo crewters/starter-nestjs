@@ -6,8 +6,8 @@ export class UsersController {
   constructor(private readonly appService: UsersService) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getAllProfilePics(): {} {
+    return this.appService.getAllProfilePics();
   } 
 
   @Get('/:id')
