@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query } from '@nestjs/common';
 import { PostsService } from './posts.service';
 
 @Controller('posts')
@@ -6,8 +6,8 @@ export class PostsController {
   constructor(private readonly appService: PostsService) {}
 
   @Get()
-  getPosts() {
-      return this.appService.getAllPosts();
+  getPosts(@Query('offset') offset: number) {
+      return this.appService.getAllPosts(offset);
   }
 
   @Get('/:id')

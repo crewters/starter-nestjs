@@ -5,10 +5,10 @@ import { connection } from 'src/db.config';
 @Injectable()
 export class PostsService {
 
-  async getAllPosts(): Promise<{}> {
+  async getAllPosts(offset): Promise<{}> {
     return new Promise((res, rej) => {
       connection.query(
-        `SELECT * from POSTS ORDER BY time DESC LIMIT 1;`,
+        `SELECT * from POSTS ORDER BY time DESC LIMIT 1 OFFSET ${offset};`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
