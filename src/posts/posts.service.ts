@@ -8,7 +8,7 @@ export class PostsService {
   async getAllPosts(): Promise<{}> {
     return new Promise((res, rej) => {
       connection.query(
-        `SELECT * from POSTS ORDER BY time DESC LIMIT 3;`,
+        `SELECT * from POSTS ORDER BY time DESC LIMIT 1;`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
@@ -23,7 +23,7 @@ export class PostsService {
   async getPostById(id): Promise<{}> {
     return new Promise((res, rej) => {
       connection.query(
-        `SELECT * from POSTS WHERE ID='${id["id"]}' LIMIT 3;`,
+        `SELECT * from POSTS WHERE ID='${id["id"]}' LIMIT 1;`,
         function (error, results, fields) {
           if (error) throw error;
           results = results.rows.map((result) => {
